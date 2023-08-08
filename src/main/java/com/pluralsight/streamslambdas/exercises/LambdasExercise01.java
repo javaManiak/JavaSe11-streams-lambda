@@ -5,6 +5,7 @@
  */
 package com.pluralsight.streamslambdas.exercises;
 
+import com.pluralsight.streamslambdas.ExampleData;
 import com.pluralsight.streamslambdas.Product;
 
 import java.util.List;
@@ -16,8 +17,17 @@ public class LambdasExercise01 {
      *
      * @param products The list of products to sort.
      */
-    public void sortProductsByName(List<Product> products) {
+    public static void sortProductsByName(List<Product> products) {
         // TODO: Use a lambda expression to sort the list of products by name
         // products.sort(<lambda expression>);
+        products.sort((p1, p2) -> p1.getName().compareTo(p2.getName()));
+//        for (Product product : products) {
+//            System.out.println(product);
+//        }
     }
+
+//    public static void main(String[] args) {
+//        List<Product> products = ExampleData.getProducts();
+//        sortProductsByName(products);
+//    }
 }

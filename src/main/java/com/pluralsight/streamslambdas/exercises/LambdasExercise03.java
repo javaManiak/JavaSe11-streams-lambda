@@ -5,6 +5,7 @@
  */
 package com.pluralsight.streamslambdas.exercises;
 
+import com.pluralsight.streamslambdas.ExampleData;
 import com.pluralsight.streamslambdas.Product;
 
 import java.math.BigDecimal;
@@ -25,7 +26,7 @@ public class LambdasExercise03 {
     public ShoppingCartFactory getShoppingCartFactory() {
         // TODO: Implement interface ShoppingCartFactory by using a method reference
         // Note: Don't implement ShoppingCartFactory with an anonymous class
-        return null; // Replace 'null' by your solution
+        return ShoppingCart::new; // Replace 'null' by your solution
     }
 
     public static class ShoppingCart {
@@ -40,14 +41,17 @@ public class LambdasExercise03 {
          *
          * @return The total amount of the items in the shopping cart.
          */
+//        @SuppressWarnings("ResultOfMethodCallIgnored")
         public BigDecimal getTotalAmount() {
-            BigDecimal total = BigDecimal.ZERO;
+            BigDecimal total = new BigDecimal("0.0");
 
             // TODO: This solution does not work. Can you explain why?
 //            products.forEach(product -> total.add(product.getPrice()));
 
             // TODO: Implement this method in whatever way you like (you don't have to use lambda expressions)
-
+            for (Product product : products) {
+                total = total.add(product.getPrice());
+            }
             return total;
         }
     }

@@ -6,6 +6,7 @@
 package com.pluralsight.streamslambdas.exercises;
 
 import com.pluralsight.streamslambdas.Category;
+import com.pluralsight.streamslambdas.ExampleData;
 import com.pluralsight.streamslambdas.Product;
 
 import java.util.ArrayList;
@@ -24,16 +25,29 @@ public class LambdasExercise02 {
      * @param category The category of products to search for.
      * @return A new list containing the products which are in the specified category.
      */
-    public List<Product> findProductsByCategory(List<Product> products, Category category) {
+    public static List<Product> findProductsByCategory(List<Product> products, Category category) {
         // TODO: Implement interface ProductFilter with a lambda expression
         // The lambda expression should return true if the product is in the given category
-        ProductFilter filter = null; // TODO: Replace 'null' by a lambda expression
-
+        ProductFilter filter = p -> p.getCategory().equals(category); // TODO: Replace 'null' by a lambda expression
         List<Product> result = new ArrayList<>();
         for (Product product : products) {
             // TODO: Add products that are accepted by the filter to the 'result' list
+            if(filter.accept(product)) {
+                result.add(product);
+            }
         }
-
         return result;
     }
+
+//    public static void main(String[] args) {
+//        List<Product> products = ExampleData.getProducts();
+//        Category category = Category.CLEANING;
+//        List<Product> result = new ArrayList<>();
+//
+//        result = findProductsByCategory(products, category);
+//
+//        for (Product product : result) {
+//            System.out.println(product);
+//        }
+//    }
 }
